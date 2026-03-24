@@ -1,6 +1,6 @@
 ---
 name: learn
-description: "Back up all global Claude Code customizations (CLAUDE.md, settings, skills, plugins) to the austad-claude-assets GitHub repo. Also reviews the current session for corrections and insights to save as memory before syncing. Use when the user says /learn, 'back up my config', 'sync my settings', 'save my customizations', or 'push my learnings'."
+description: "Back up all global Claude Code customizations (CLAUDE.md, settings, skills, plugins, toolbox) to the austad-claude-assets GitHub repo. Also reviews the current session for corrections and insights to save as memory before syncing. Use when the user says /learn, 'back up my config', 'sync my settings', 'save my customizations', or 'push my learnings'."
 ---
 
 # Learn -- Claude Code Configuration Backup
@@ -99,7 +99,52 @@ if [ -d "$HOME/.claude/skills" ]; then
 fi
 ```
 
-### Step 5: Generate README.md
+### Step 5: Generate toolbox.md
+
+Generate `$REPO_DIR/toolbox.md` with two sections:
+
+**Section 1: Claude Plugins (auto-detected)**
+
+Parse `~/.claude/plugins/installed_plugins.json` to extract all installed plugins.
+For each plugin key like `code-review@claude-plugins-official`, extract:
+- Plugin name (part before `@`)
+- Marketplace (part after `@`)
+- Scope: check each install entry -- if any has `"scope": "user"`, mark as `global`, otherwise `project`
+
+Render as a markdown table:
+
+```markdown
+# Toolbox
+
+Tools and plugins used across projects.
+
+## Claude Plugins
+
+| Plugin | Scope | Marketplace |
+|---|---|---|
+| code-review | global | claude-plugins-official |
+| frontend-design | project | claude-plugins-official |
+```
+
+**Section 2: Dev Tools (manually curated, preserved across syncs)**
+
+If `$REPO_DIR/toolbox.md` already exists, extract everything from `## Dev Tools`
+onwards (inclusive) and re-append it verbatim after the auto-generated plugins
+section. This preserves manual edits.
+
+If the file does not exist yet (first run), seed the section with:
+
+```markdown
+## Dev Tools
+
+<!-- Manually curated -- /learn preserves this section across syncs -->
+| Tool | Purpose |
+|---|---|
+| playwright | Browser automation and E2E testing |
+| ruff | Python linting and formatting |
+```
+
+### Step 6: Generate README.md
 
 Create or update `$REPO_DIR/README.md` with:
 - Title: "Nicolai Austad -- Claude Code Assets"

@@ -2,7 +2,7 @@
 
 Generic Claude Code starter setup. Auto-maintained by the `/learn` skill.
 
-**Last synced:** 2026-03-24 19:36:12
+**Last synced:** 2026-03-24 19:50:47
 
 ## What is this?
 
@@ -16,6 +16,7 @@ Consider it a core capability of Nicolai's agent maestro skills built over time,
 
 - **global/** -- Global CLAUDE.md, settings, and plugin configurations
 - **skills/** -- Custom global skills available across all projects
+- **toolbox.md** -- Tools and plugins used across projects (plugins auto-detected, dev tools manually curated)
 
 ## Directory Structure
 
@@ -34,6 +35,7 @@ skills/interview-me
 skills/interview-me/SKILL.md
 skills/learn
 skills/learn/SKILL.md
+toolbox.md
 ```
 
 ## Usage
@@ -41,4 +43,5 @@ skills/learn/SKILL.md
 Invoke `/learn` in any Claude Code session to:
 1. Review the session for new corrections/insights and save them as memory
 2. Sync all global assets to this repo
-3. Commit and push
+3. Auto-generate the toolbox from installed plugins
+4. Commit and push
