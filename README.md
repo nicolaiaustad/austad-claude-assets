@@ -6,9 +6,11 @@ Generic Claude Code starter setup. Auto-maintained by the `/learn` skill.
 
 ## What is this?
 
-This repo stores my global Claude Code customizations so they are never lost.
+This repo stores Nicolai Austad's global Claude Code customizations so they are never lost.
 It serves as a clean starter kit for any new project -- no project-specific
 content, only universally applicable configurations.
+
+Consider it a core capability of Nicolai's agent maestro skills built over time iteration by iteration.
 
 ## Contents
 
