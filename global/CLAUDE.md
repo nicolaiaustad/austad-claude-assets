@@ -1,0 +1,1 @@
+- Never add emojis in the codebase, only use in UI elements for dashboards or frontends
