@@ -1,11 +1,14 @@
 ---
 name: learn
-description: "Back up all global Claude Code customizations (CLAUDE.md, settings, skills, memory, plugins) to the austad-claude-assets GitHub repo. Also reviews the current session for corrections and insights to save as memory before syncing. Use when the user says /learn, 'back up my config', 'sync my settings', 'save my customizations', or 'push my learnings'."
+description: "Back up all global Claude Code customizations (CLAUDE.md, settings, skills, plugins) to the austad-claude-assets GitHub repo. Also reviews the current session for corrections and insights to save as memory before syncing. Use when the user says /learn, 'back up my config', 'sync my settings', 'save my customizations', or 'push my learnings'."
 ---
 
 # Learn -- Claude Code Configuration Backup
 
 Back up all global Claude Code customizations to https://github.com/nicolaiaustad/austad-claude-assets.git
+
+This repo is a generic starter setup for any new project. It contains only
+globally applicable configurations -- no project-specific content.
 
 Run three phases in order. All phases auto-apply without asking for approval on
 each step. Present a consolidated report at the end.
@@ -46,6 +49,9 @@ Save all learnings before proceeding. If no learnings were found in the session,
 say "No new learnings to capture" and move to Phase 2.
 
 ## Phase 2: Sync Global Assets to Repo
+
+Only globally applicable assets are synced. No project-specific memory,
+CLAUDE.md files, or configs. This repo is a clean starter kit for any project.
 
 ### Step 1: Ensure repo exists
 
@@ -93,45 +99,11 @@ if [ -d "$HOME/.claude/skills" ]; then
 fi
 ```
 
-### Step 5: Sync memory files
-
-For each project directory in `~/.claude/projects/*/` that has a `memory/`
-subdirectory, copy all `.md` files into `$REPO_DIR/memory/<project-name>/`.
-
-Derive readable project names by stripping the encoded path prefix:
-- `-Users-nicolaiaustad-Local-Code-realm` becomes `realm`
-- `-Users-nicolaiaustad-conductor-workspaces-realm-philadelphia` becomes `realm-philadelphia`
-- `-Users-nicolaiaustad-Library-CloudStorage-OneDrive-Personal-Programming-Guru` becomes `guru`
-
-Logic: for conductor workspaces, take the last two segments joined with `-`.
-For everything else, take the last segment.
-
-```bash
-for proj_dir in "$HOME/.claude/projects"/*/; do
-  mem_dir="$proj_dir/memory"
-  if [ -d "$mem_dir" ] && ls "$mem_dir"/*.md 1>/dev/null 2>&1; then
-    encoded=$(basename "$proj_dir")
-
-    if echo "$encoded" | grep -q "conductor-workspaces"; then
-      project_name=$(echo "$encoded" | sed 's/.*conductor-workspaces-//' | sed 's/-/-/' )
-    else
-      project_name=$(echo "$encoded" | rev | cut -d'-' -f1 | rev)
-      if [ ${#project_name} -le 2 ]; then
-        project_name=$(echo "$encoded" | rev | cut -d'-' -f1,2 | rev)
-      fi
-    fi
-
-    mkdir -p "$REPO_DIR/memory/$project_name"
-    cp "$mem_dir"/*.md "$REPO_DIR/memory/$project_name/"
-  fi
-done
-```
-
-### Step 6: Generate README.md
+### Step 5: Generate README.md
 
 Create or update `$REPO_DIR/README.md` with:
 - Title: "Nicolai Austad -- Claude Code Assets"
-- Description: what this repo contains and why
+- Description: generic Claude Code starter setup
 - Last synced timestamp
 - Directory listing of what is backed up (use `find` or `tree` output)
 - Note that this repo is auto-maintained by the `/learn` Claude Code skill
