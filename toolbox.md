@@ -19,3 +19,5 @@ Tools and plugins used across projects.
 |---|---|
 | playwright | Browser automation and E2E testing |
 | ruff | Python linting and formatting |
+| playwright-cli | Playwright CLI skill for browser automation in Claude Code |
+| ruflo | Code formatting and project scaffolding |
