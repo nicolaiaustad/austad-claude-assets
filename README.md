@@ -2,7 +2,7 @@
 
 Generic Claude Code starter setup. Auto-maintained by the `/learn` skill.
 
-**Last synced:** 2026-03-24 19:53:13
+**Last synced:** 2026-03-25
 
 ## What is this?
 
@@ -19,20 +19,32 @@ content, only universally applicable configurations.
 ## Directory Structure
 
 ```
-README.md
-global
-global/CLAUDE.md
-global/plugins
-global/plugins/blocklist.json
-global/plugins/installed_plugins.json
-global/plugins/known_marketplaces.json
-global/settings.json
-global/settings.local.json
-skills
-skills/interview-me
-skills/interview-me/SKILL.md
-skills/learn
-skills/learn/SKILL.md
+global/
+  CLAUDE.md
+  settings.json
+  settings.local.json
+  plugins/
+    blocklist.json
+    installed_plugins.json
+    known_marketplaces.json
+skills/
+  agentdb-*/           AgentDB integration skills
+  browser/             Browser automation
+  github-*/            GitHub workflow skills
+  hooks-automation/    Git hooks
+  interview-me/        Interview skill
+  learn/               This backup skill
+  pair-programming/    Pair programming
+  playwright-cli/      Playwright browser testing
+  reasoningbank-*/     ReasoningBank learning
+  skill-builder/       Skill creation
+  sparc-methodology/   SPARC methodology
+  stream-chain/        Stream-JSON pipelines
+  swarm-*/             Multi-agent swarms
+  ui-ux-pro-max/       UI/UX design intelligence
+  v3-*/                Claude-flow v3 skills
+  verification-quality/
+  wrap-up/             Session wrap-up
 toolbox.md
 ```
 
