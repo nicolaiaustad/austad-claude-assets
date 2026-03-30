@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(*)"
+    ],
+    "deny": [
+      "Bash(rm *)",
+      "Bash(rm)"
+    ]
+  },
   "enabledPlugins": {
     "code-review@claude-plugins-official": true
   },
@@ -12,14 +21,5 @@
   },
   "effortLevel": "high",
   "voiceEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
-  "permissions": {
-    "allow": [
-      "Bash(*)"
-    ],
-    "deny": [
-      "Bash(rm *)",
-      "Bash(rm)"
-    ]
-  }
+  "skipDangerousModePermissionPrompt": true
 }

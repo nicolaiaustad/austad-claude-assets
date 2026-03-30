@@ -16,20 +16,20 @@
       {
         "scope": "project",
         "projectPath": "/Users/nicolaiaustad/Local_Code/realm",
-        "installPath": "/Users/nicolaiaustad/.claude/plugins/cache/claude-plugins-official/frontend-design/61c0597779bd",
-        "version": "61c0597779bd",
+        "installPath": "/Users/nicolaiaustad/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+        "version": "unknown",
         "installedAt": "2026-03-07T11:56:26.171Z",
-        "lastUpdated": "2026-03-21T11:17:41.958Z",
+        "lastUpdated": "2026-03-29T10:56:00.844Z",
         "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
       }
     ],
     "code-review@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/nicolaiaustad/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
-        "version": "unknown",
+        "installPath": "/Users/nicolaiaustad/.claude/plugins/cache/claude-plugins-official/code-review/31e7200b33db",
+        "version": "31e7200b33db",
         "installedAt": "2026-03-07T11:58:07.139Z",
-        "lastUpdated": "2026-03-25T20:07:46.013Z",
+        "lastUpdated": "2026-03-30T21:53:05.234Z",
         "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
       }
     ],
@@ -37,10 +37,10 @@
       {
         "scope": "project",
         "projectPath": "/Users/nicolaiaustad/Local_Code/realm",
-        "installPath": "/Users/nicolaiaustad/.claude/plugins/cache/claude-plugins-official/github/61c0597779bd",
-        "version": "61c0597779bd",
+        "installPath": "/Users/nicolaiaustad/.claude/plugins/cache/claude-plugins-official/github/unknown",
+        "version": "unknown",
         "installedAt": "2026-03-07T12:00:03.444Z",
-        "lastUpdated": "2026-03-21T11:17:41.957Z",
+        "lastUpdated": "2026-03-29T10:56:00.844Z",
         "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
       }
     ],

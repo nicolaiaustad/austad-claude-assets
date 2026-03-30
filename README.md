@@ -2,7 +2,7 @@
 
 Generic Claude Code starter setup. Auto-maintained by the `/learn` skill.
 
-**Last synced:** 2026-03-25
+**Last synced:** 2026-03-31
 
 ## What is this?
 
@@ -28,23 +28,8 @@ global/
     installed_plugins.json
     known_marketplaces.json
 skills/
-  agentdb-*/           AgentDB integration skills
-  browser/             Browser automation
-  github-*/            GitHub workflow skills
-  hooks-automation/    Git hooks
-  interview-me/        Interview skill
-  learn/               This backup skill
-  pair-programming/    Pair programming
-  playwright-cli/      Playwright browser testing
-  reasoningbank-*/     ReasoningBank learning
-  skill-builder/       Skill creation
-  sparc-methodology/   SPARC methodology
-  stream-chain/        Stream-JSON pipelines
-  swarm-*/             Multi-agent swarms
-  ui-ux-pro-max/       UI/UX design intelligence
-  v3-*/                Claude-flow v3 skills
-  verification-quality/
-  wrap-up/             Session wrap-up
+  interview-me/       Interview skill
+  learn/              This backup skill
 toolbox.md
 ```
 
