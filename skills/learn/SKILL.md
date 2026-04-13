@@ -27,6 +27,7 @@ For each learning, decide the right destination:
 | Type | Destination |
 |---|---|
 | Global rule or preference | Edit `~/.claude/CLAUDE.md` |
+| Universal feedback (applies to any project) | Save to **both** `~/.claude/projects/<current-project>/memory/` and `$REPO_DIR/feedback/` so it propagates to future projects via `/bootstrap` |
 | Project-specific insight | Save to `~/.claude/projects/<current-project>/memory/` using standard memory frontmatter |
 | Debugging pattern or gotcha | Save as memory file with type `feedback` |
 | User role or context | Save as memory file with type `user` |
@@ -99,7 +100,42 @@ if [ -d "$HOME/.claude/skills" ]; then
 fi
 ```
 
-### Step 5: Generate toolbox.md
+### Step 5: Sync universal feedback patterns
+
+Sync the `feedback/` directory in the repo. This is a two-way sync:
+
+1. For each `.md` file in `$REPO_DIR/feedback/`, ensure it exists (the repo is
+   the source of truth for universal patterns).
+2. Check the current project's memory directory for feedback files that are
+   **universal** (not project-specific). If any exist in the project memory but
+   not in `$REPO_DIR/feedback/`, copy them to the repo so they propagate to
+   future projects via `/bootstrap`.
+
+A feedback file is universal if it applies to any project (e.g., "always test
+overflow on mobile") vs project-specific (e.g., "use the ORM wrapper in
+src/db.ts"). Use the file's content to judge.
+
+```bash
+mkdir -p "$REPO_DIR/feedback"
+
+# Copy new universal feedback from project memory to repo
+PROJECT_PATH=$(pwd | sed 's|/|-|g')
+MEMORY_DIR="$HOME/.claude/projects/$PROJECT_PATH/memory"
+if [ -d "$MEMORY_DIR" ]; then
+  for f in "$MEMORY_DIR"/feedback_*.md; do
+    [ -f "$f" ] || continue
+    filename=$(basename "$f")
+    # Strip the feedback_ prefix for the repo copy
+    repo_name="${filename#feedback_}"
+    if [ ! -f "$REPO_DIR/feedback/$repo_name" ]; then
+      # Read the file and check if it's universal before copying
+      cp "$f" "$REPO_DIR/feedback/$repo_name"
+    fi
+  done
+fi
+```
+
+### Step 6: Generate toolbox.md
 
 Generate `$REPO_DIR/toolbox.md` with two sections:
 
@@ -144,7 +180,7 @@ If the file does not exist yet (first run), seed the section with:
 | ruff | Python linting and formatting |
 ```
 
-### Step 6: Generate README.md
+### Step 7: Generate README.md
 
 Create or update `$REPO_DIR/README.md` with:
 - Title: "Nicolai Austad -- Claude Code Assets"

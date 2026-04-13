@@ -1,42 +1,51 @@
 # Nicolai Austad -- Claude Code Assets
 
-Generic Claude Code starter setup. Auto-maintained by the `/learn` skill.
+Cold-start harness for new projects. Auto-maintained by `/learn`, applied by `/bootstrap`.
 
-**Last synced:** 2026-03-31
+**Last synced:** 2026-04-13
 
 ## What is this?
 
-This repo stores my global Claude Code customizations so they are never lost.
-It serves as a clean starter kit for any new project -- no project-specific
-content, only universally applicable configurations.
+This repo stores my global Claude Code configuration and proven workflow
+patterns. It serves two purposes:
+
+1. **Cold-start new projects** -- Run `/bootstrap` in any repo to get my
+   workflow rules, feedback patterns, and plugin recommendations instantly.
+2. **Back up and evolve** -- Run `/learn` to capture session learnings and sync
+   global config. Universal feedback patterns propagate to all future projects.
 
 ## Contents
 
-- **global/** -- Global CLAUDE.md, settings, and plugin configurations
-- **skills/** -- Custom global skills available across all projects
-- **toolbox.md** -- Tools and plugins used across projects (plugins auto-detected, dev tools manually curated)
-
-## Directory Structure
-
 ```
-global/
-  CLAUDE.md
-  settings.json
-  settings.local.json
-  plugins/
-    blocklist.json
-    installed_plugins.json
-    known_marketplaces.json
+global/          Global CLAUDE.md, settings, plugin configs
+feedback/        Universal feedback patterns (copied to new projects by /bootstrap)
 skills/
-  interview-me/       Interview skill
-  learn/              This backup skill
-toolbox.md
+  bootstrap/     Cold-start a new project
+  learn/         Back up config and capture session learnings
+  interview-me/  Stress-test a plan or design
+toolbox.md       Plugins and dev tools inventory
 ```
 
-## Usage
+## Quick start
 
-Invoke `/learn` in any Claude Code session to:
-1. Review the session for new corrections/insights and save them as memory
-2. Sync all global assets to this repo
-3. Auto-generate the toolbox from installed plugins
-4. Commit and push
+**New project:** Run `/bootstrap` in the project directory. This copies the
+global CLAUDE.md as the project CLAUDE.md, seeds your memory with universal
+feedback patterns, and recommends plugins.
+
+**End of session:** Run `/learn` to capture corrections and insights, sync
+global config, and push changes here.
+
+## How feedback flows
+
+```
+You correct Claude in project A
+        |
+  /learn saves it to feedback/
+        |
+  /bootstrap copies it to project B
+        |
+Claude avoids the same mistake in project B
+```
+
+Universal feedback (applies to any project) lives in `feedback/`. Project-specific
+feedback stays in that project's memory only.
