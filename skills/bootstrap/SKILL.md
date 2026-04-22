@@ -36,10 +36,12 @@ If a `CLAUDE.md` already exists, skip this step and report that it was skipped.
 
 ## Phase 3: Set up project memory with universal feedback
 
-Determine the project memory directory from the current working directory:
+Determine the project memory directory from the current working directory.
+Claude Code sanitizes both `/` and `_` to `-` when deriving the memory dir name,
+so the sed expression must replace both:
 
 ```bash
-PROJECT_PATH=$(pwd | sed 's|/|-|g')
+PROJECT_PATH=$(pwd | sed 's|[/_]|-|g')
 MEMORY_DIR="$HOME/.claude/projects/$PROJECT_PATH/memory"
 mkdir -p "$MEMORY_DIR"
 ```
